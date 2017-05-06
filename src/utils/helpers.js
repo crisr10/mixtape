@@ -1,12 +1,15 @@
 // Include the Axios library for HTTP requests
 var axios = require("axios");
 
-// NYT API Key (Replace with your own API Key)
-var APIKey = "9b3adf57854f4a19b7b5782cdd6e427a";
-
 // Helper Functions
 var helpers = {
 
+  checkDate: function(date) {
+    return axios.get("/date", date)
+        .then(function(results) {
+            return results
+        })
+  },
   // This will run our query.
   runQuery: function(term, start, end) {
 
@@ -64,6 +67,29 @@ var helpers = {
     });
   }
 };
+
+const express = require("express");
+const request = require("request");
+
+const router = express.Router();
+
+const spotifySearchUrl = "https://api.spotify.com/v1/search?q=";
+
+router.get("/song/:query", function(req, res) {
+
+    let queryUrl = spotifySearchUrl + encodeURIComponent(req.body.query) + "&type=album,artist,track";
+
+    console.log("Query URL: ", queryUrl);
+
+    request(queryUrl, function(error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("response: ", response);
+            res.send(response);
+        }
+    });
+});
 
 
 // We export the helpers function
