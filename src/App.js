@@ -1,21 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Include the Main React Dependencies
+var React = require("react");
+var ReactDOM = require("react-dom");
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+// Grabs the Routes
+var routes = require("./config/routes");
 
-export default App;
+// Renders the contents according to the route page
+// Displays the contents in the div app of index.html
+// Note how ReactDOM takes in two parameters (the contents and the location)
+ReactDOM.render(routes, document.getElementById("app"));
