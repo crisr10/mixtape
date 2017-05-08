@@ -9,18 +9,16 @@ router.get("/", function(req, res) {
     return res.redirect("/search");
 });
 
-// route to check if date already exists
-router.get("/dates/:date", function(req, res) {
-    db.Day.find({
-        where: {
-            date: req.body.date
-        }, function (error, day) {
-            if (error) {
-                throw error;
-            } else {
-                console.log(day);
-                res.send(day);
-            }
+router.get("/songs/id", function(req, res) {
+    db.Day.findAll({
+        attributes: ["date","trackId"]
+    }, function(error, days) {
+        if (error) {
+            console.log(error);
+            throw error;
+        } else {
+            console.log(days);
+            res.send(days);
         }
     })
 });
@@ -28,8 +26,8 @@ router.get("/dates/:date", function(req, res) {
 // route to get all entered dates
 router.get("/dates", function(req, res) {
     db.Day.findAll({
-        attributes: "date"
-    }, function(error, days) {
+        attributes: ["date"]
+    }, function(error, dates) {
         if (error) {
             console.log(error);
             throw error;
