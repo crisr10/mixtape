@@ -1,30 +1,17 @@
-var React = require("react");
+import React from "react";
+import { Route, IndexRoute } from "react-router";
 
-var router = require("react-router");
+import App from "../App";
+import Profile from "../containers/Profile";
+// import Home from "../containers/Home";
 
-var Route = router.Route;
+export default () => {
+    return (
+        <Route path="/" component={App}>
+            <IndexRoute component={Profile}/>
+            {/*<Route path="/home" component={Home}/>*/}
+        </Route>
+    );
+};
 
-var IndexRoute = router.IndexRoute;
 
-var Router = router.Router;
-
-var browserHistory = router.browserHistory;
-
-/* NEED TO MAKE HOME THE INDEX ROUTE*/
-
-// var Home = require("../Home");
-var Profile = require("../containers/Profile");
-
-module.exports = (
-
-  <Router history={browserHistory}>
-    {/*<Route path="/" component={Home}>*/}
-    <Route path="/" component={Profile}>
-      {/*<Route path="Search" component={Search} />*/}
-      {/*<Route path="Saved" component={Saved} />*/}
-
-      <IndexRoute component={Profile} />
-
-    </Route>
-  </Router>
-);

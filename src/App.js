@@ -1,6 +1,20 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
+import React, { PropTypes, Component } from "react";
 
-var routes = require("./config/routes");
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <div>
+                    {this.props.children}
+                </div>
+            </div>
+        );
+    }
+}
 
-ReactDOM.render(routes, document.getElementById("root"));
+App.propTypes = {
+    children: PropTypes.node,
+    routes: PropTypes.array
+};
+
+export default App;
