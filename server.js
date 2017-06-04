@@ -14,13 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(methodOverride("_method"));
 
-var routes = require("./controllers/song_controllers");
-
-app.use(routes);
-
-app.get("*", function(req, res) {
-    res.sendFile(__dirname + "/public/index.html");
-});
+require("./controllers/song_controllers")(app);
+//
+// app.get("*", function(req, res) {
+//     res.sendFile(__dirname + "/public/index.html");
+// });
 
 db.sequelize.sync({force: true}).then(function() {
     app.listen(PORT, function() {
