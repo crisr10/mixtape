@@ -1,6 +1,5 @@
-// Challenge table model
 module.exports = function (sequelize, DataTypes) {
-    var Day = sequelize.define("Day", {
+    let Day = sequelize.define("Day", {
         date: {
             type: DataTypes.DATEONLY,
             allowNull: false
@@ -46,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         notes: {
-            type: DataTypes.TINY,
+            type: DataTypes.TEXT("tiny"),
             allowNull: true
         },
         editable: {
@@ -57,7 +56,7 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: true,
         classMethods: {
             associate: function (models) {
-                Day.belongsTo(models.Month);
+                Day.belongsTo(models.User);
             }
         }
     });

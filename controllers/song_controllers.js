@@ -5,14 +5,10 @@ const router = express.Router();
 
 const db = require("../models");
 
-router.get("/", function(req, res) {
-    return res.redirect("/search");
-});
-
 router.get("/songs/id", function(req, res) {
     db.Day.findAll({
         attributes: ["date","trackId"]
-    }, function(error, days) {
+    }, function(error   , days) {
         if (error) {
             console.log(error);
             throw error;
