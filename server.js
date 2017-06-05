@@ -15,7 +15,7 @@ var songRoutes = require("./controllers/song_controllers");
 app.use(songRoutes);
 
 app.get('*', function(request, response) {
-    response.sendFile(__dirname, './public/index.html');
+    response.sendFile(__dirname + '/public/index.html');
 });
 
 db.sequelize.sync({force: true}).then(function() {
