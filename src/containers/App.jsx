@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from "react";
 class App extends Component {
     render() {
         return (
-            <div className="App">
+            <div>
                 <div>
                     <h1>THIS IS WORKING</h1>
                     {this.props.children}
@@ -15,7 +15,7 @@ class App extends Component {
 
 App.propTypes = {
     children: PropTypes.node,
-    routes: PropTypes.array
+    routes: PropTypes.array``
 };
 
 export default App;
