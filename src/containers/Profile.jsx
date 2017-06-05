@@ -32,7 +32,7 @@ class Profile extends Component {
         return (
             <div>
                 <h1>USER PROFILE</h1>
-                {this.buildSongs()}
+                {/*{this.buildSongs()}*/}
             </div>
         );
     }
