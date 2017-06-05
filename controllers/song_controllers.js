@@ -5,9 +5,6 @@ const router = express.Router();
 
 const db = require("../models");
 
-router.get("/", function(req, res) {
-    return res.redirect("/profile");
-});
 
 router.get("/songs/id", function(req, res) {
     db.Day.findAll({
